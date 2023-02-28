@@ -1,9 +1,12 @@
 package professor.allocation.dayvid.entity;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,6 +18,9 @@ public class Department {
 	private Long id;
 	@Column(name = "name", nullable = false,unique = true)
 	private String name;
+	@OneToMany(mappedBy = "department")
+	private List<Professor> professors;
+	
 
 	public Department() {
 		super();
@@ -44,7 +50,7 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return "Departament [id=" + id + ", name=" + name + "]";
+		return "Department [id=" + id + ", name=" + name + "]";
 	}
 
 }
