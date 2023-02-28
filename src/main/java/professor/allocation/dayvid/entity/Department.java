@@ -1,5 +1,4 @@
 package professor.allocation.dayvid.entity;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,20 +7,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="departament")
+@Table(name="department")
 
-public class Departament {
+public class Department {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "name", nullable = false,unique = true)
 	private String name;
 
-	public Departament() {
+	public Department() {
 		super();
 	}
 
-	public Departament(Long id, String name) {
+	public Department(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;

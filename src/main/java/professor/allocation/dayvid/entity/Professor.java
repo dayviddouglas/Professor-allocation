@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,12 +15,15 @@ public class Professor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "name", nullable = false, unique = true)
+	@Column(name = "name", nullable = false)
 	private String name;
 	@Column(name = "cpf", nullable = false, unique = true,length =14)
 	private String cpf;
 	@Column(name = "department_id",nullable = false)
 	private Long departmentId;
+	@ManyToOne(optional = false)
+	@JoinColumn(name="department_id", nullable = false,insertable = false,updatable = false)
+	private Department departament;
 	
 	public Professor() {
 		super();

@@ -1,8 +1,6 @@
 package professor.allocation.dayvid.entity;
-
 import java.time.DayOfWeek;
 import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,6 +8,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -32,8 +32,15 @@ public class Allocation {
 	private Date end;
 	@Column(name = "course_id",nullable = false)
 	private Long courseId;
+	@ManyToOne(optional = false)
+	@JoinColumn(name="course_id", nullable = false,insertable = false, updatable = false)
+	private Course course;
 	@Column(name = "professor_id",nullable = false)
 	private Long professorId;
+	@ManyToOne(optional = false)
+	@JoinColumn(name="professor_id", nullable = false, insertable = false,updatable = false)
+	private Professor professor;
+	
 	
 	
 	public Allocation() {
