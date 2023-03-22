@@ -24,11 +24,13 @@ public class Professor {
 	private String cpf;
 	@Column(name = "department_id",nullable = false)
 	private Long departmentId;
-	@ManyToOne(optional = false)
-	@JoinColumn(name="department_id", nullable = false,insertable = false,updatable = false)
+	@ManyToOne(optional = false)/* O opcional = false: Significa a cardinalidade mínima é 1. Caso fosse true, a cardinalidade mínima é 0.*/
+	@JoinColumn(name="department_id", nullable = false,insertable = false,updatable = false) /* O insertable e o updatable = false, significa que as modificações e/ou inserções serão feitas apenas na própria classe.*/
 	private Department department;
 	@OneToMany(mappedBy="professor")
 	private List<Allocation> allocations;
+	
+	
 	
 	public Professor() {
 		super();
