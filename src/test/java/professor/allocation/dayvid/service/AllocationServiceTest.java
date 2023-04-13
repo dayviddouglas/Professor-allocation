@@ -98,7 +98,7 @@ public class AllocationServiceTest {
 	 allocation.setCourseId(1L);
 	 
 	// Act
-    allocation = allocationService.save(allocation);
+    allocation = allocationService.update(allocation);
 		 
     // Print
     System.out.println(allocation);

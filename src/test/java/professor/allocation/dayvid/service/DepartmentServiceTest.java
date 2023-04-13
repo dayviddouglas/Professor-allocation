@@ -57,7 +57,7 @@ public class DepartmentServiceTest {
 		department.setId(1L);
 		department.setName("Coordenação");
 		// Act
-		department = departmentService.save(department);
+		department = departmentService.update(department);
 		// Print
 		System.out.println(department);
 	}
