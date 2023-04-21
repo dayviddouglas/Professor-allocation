@@ -1,6 +1,15 @@
 package professor.allocation.dayvid.entity;
 import java.time.DayOfWeek;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
+import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -18,25 +27,34 @@ import jakarta.persistence.TemporalType;
 @Table(name="allocation") 
 
 public class Allocation {
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "day", nullable = false)
 	private DayOfWeek day;
+	@JsonFormat(pattern = "HH:mmZ")
+    @JsonSerialize(using = DateSerializer.class)
+    @JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
 	@Temporal(TemporalType.TIME)
 	@Column(name = "starthour", nullable = false)
 	private Date start;
+	@JsonFormat(pattern = "HH:mmZ")
+    @JsonSerialize(using = DateSerializer.class)
+    @JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
 	@Temporal(TemporalType.TIME)
 	@Column(name = "endhour",nullable = false)
 	private Date end;
 	@Column(name = "course_id",nullable = false)
 	private Long courseId;
+	@JsonIgnoreProperties({"allocations"})
 	@ManyToOne(optional = false)
 	@JoinColumn(name="course_id", nullable = false,insertable = false, updatable = false)
 	private Course course;
 	@Column(name = "professor_id",nullable = false)
 	private Long professorId;
+	@JsonIgnoreProperties({"allocations"})
 	@ManyToOne(optional = false)
 	@JoinColumn(name="professor_id", nullable = false, insertable = false,updatable = false)
 	private Professor professor;

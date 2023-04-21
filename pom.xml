@@ -14,7 +14,7 @@
 	<name>professor-allocation-dayvid</name>
 	<description>Sistema de RH para universidade</description>
 	<properties>
-		<java.version>17</java.version>
+    <java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -36,6 +36,26 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-boot-starter</artifactId>
+    <version>3.0.0</version>
+	</dependency>
+	
+	<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+	</dependency>
+	<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.1.0</version>
+	</dependency>
+		
+	
 	</dependencies>
 
 	<build>
