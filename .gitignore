@@ -31,3 +31,16 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# ====================================
+# Spring Boot configs sensíveis
+# ====================================
+application-*.yml
+application-*.yaml
+application-*.properties
+application.properties
+
+# ====================================
+# Variáveis de ambiente
+# ====================================
+.env
